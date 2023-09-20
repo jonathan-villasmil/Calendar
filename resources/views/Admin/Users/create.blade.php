@@ -7,31 +7,31 @@
 @stop
 
 @section('content')
-    <form action="{{ route('users.store') }}" method="POST" >
+    <form action="{{ route('admin.users.store')}}" method="POST" >
         @csrf
         <div class="form-row">
             <div class="form-group col-md-6">
-                <label for="inputName">Name</label>
+                <label for="name">Name</label>
                 <input type="text" name="name" class="form-control" id="inputname" placeholder="Name">
             </div>
 
             <div class="form-group col-md-6">
-                <label for="inputEmail">Email</label>
+                <label for="email">Email</label>
                 <input type="email" name="email" class="form-control" id="inputEmail" placeholder="Email">
             </div>
-            <div class="form-group col-md-6">
+            {{-- <div class="form-group col-md-6">
                 <label for="inputPassword">Phone</label>
                 <input type="tel" name="phone" class="form-control" id="inputPhone" placeholder="+34 213-456-897">
-            </div>
+            </div> --}}
 
             <div class="form-group col-md-6">
-                <label for="inputPassword">Password</label>
-                <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                <label for="password">Password</label>
+                <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Password">
             </div>
             
 
         </div>
-        <div class="form-group">
+        {{-- <div class="form-group">
             <label for="inputAddress">Address</label>
             <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
         </div>
@@ -68,7 +68,7 @@
                 
             </div>
             
-        </div>
+        </div> --}}
 
         <button type="submit" class="btn btn-primary">Create</button>
     </form>

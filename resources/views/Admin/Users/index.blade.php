@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Users')
+@section('title', 'User')
 
 @section('content_header')
-   <div class=" d-flex p-3 align-items-center justify-content-between border border-red">
+   <div class=" d-flex p-3 align-items-center justify-content-between">
 
             <div class="input-group rounded">
                 <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
@@ -12,12 +12,21 @@
                 </span>
             </div>    
     </div>
+
     <div class="d-flex p-3 align-items-center justify-content-between">
         <div class="btn-group" role="group" aria-label="Basic example">
-            <button id="openModalButton" type="button" class="btn btn-success mr-3 rounded"><a class="text-white" href="{{route('users.create')}}">Create User</a></button>
+            <button id="openModalButton" type="button" class="btn btn-success mr-3 rounded"><a class="text-white" href="{{route('admin.users.create')}}">Create User</a></button>
             <button type="button" class="btn btn-info mr-3 rounded">Importar Csv</button>
             <button type="button" class="btn btn-primary rounded">Exportar Csv</button>
         </div>
+    </div>
+
+    <div id="message">
+        @if(session('message'))
+            <div class="alert alert-success">
+                {{ session('message') }}
+            </div>
+        @endif
     </div>
 @stop
 
@@ -40,9 +49,17 @@
                             <td>{{$user->name}}</td>
                             <td>{{$user->email}}</td>
                             <td>
-                                <button class="btn btn-success">Show</button>
-                                <button class="btn btn-primary">Edit</button>
-                                <button class="btn btn-danger">Delete</button>
+                                <div class="btn-group" role="group">
+                                    <button href="{{route('admin.users.show', $user)}}" class="btn btn-success mr-2 rounded"><a class="text-white" href="{{route('admin.users.show', $user)}}">Show</a></button>
+                                    <button href="{{route('admin.users.edit', $user)}}" class="btn btn-primary mr-2 rounded"><a class="text-white" href="{{route('admin.users.edit', $user)}}">Edit</a></button>
+                                    <form action="{{route('admin.users.destroy', $user)}}"  method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger rounded">Delete</button>
+                                    </form>
+                                </div>
+                                
+                                
                             </td>
                     </tr>
                 @empty

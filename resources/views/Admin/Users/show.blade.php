@@ -7,13 +7,22 @@
 @stop
 
 @section('content')
-    <p>Welcome to this beautiful admin Show User panel.</p>
+    <div class="d-flex p-3 align-items-center justify-content-between">
+        <div class="card" style="width: 18rem;">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">ID: {{$user->id}}</li>
+                <li class="list-group-item">Name: {{$user->name}}</li>
+                <li class="list-group-item">Email: {{$user->emal}}</li>
+          </div>
+    </div>
 @stop
 
 @section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
+    
 @stop
 
 @section('js')
-    <script> console.log('Hi!'); </script>
+    <script>
+
+    </script>
 @stop
