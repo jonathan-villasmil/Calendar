@@ -326,7 +326,7 @@ return [
         ],
         [
             'text' => 'Event type',
-            'url'  => 'admin/eventtype',
+            'url'  => 'admin/event-types',
             'icon' => 'fas fa-regular fa-calendar-plus',
         ],
         [

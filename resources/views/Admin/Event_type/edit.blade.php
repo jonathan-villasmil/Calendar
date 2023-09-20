@@ -1,24 +1,24 @@
 @extends('adminlte::page')
 
-@section('title', 'Edit User')
+@section('title', 'Edit Event Type')
 
 @section('content_header')
-    <h1>Edit User</h1>
+    <h1>Edit Event Type</h1>
 @stop
 
 @section('content')
-<form action="{{route('admin.users.update',$user)}}" method="POST" >
+<form action="{{route('admin.event-types.update',$eventType)}}" method="POST" >
     @csrf
     @method('PUT')
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="inputName">Name</label>
-            <input type="text" name="name" name="name" id="name" value="{{old('name',$user->name)}}" class="form-control">
+            <input type="text" name="name" name="name" id="name" value="{{old('name',$eventType->name)}}" class="form-control">
         </div>
 
         <div class="form-group col-md-6">
-            <label for="inputEmail">Email</label>
-            <input type="email" name="email" name="email" id="email" value="{{old('email',$user->email)}}" class="form-control">
+            <label for="description">Description</label>
+            <input type="text" name="description"  id="description" value="{{old('email',$eventType->description)}}" class="form-control">
         </div>
         {{-- <div class="form-group col-md-6">
             <label for="inputPassword">Phone</label>
@@ -26,8 +26,8 @@
         </div> --}}
 
         <div class="form-group col-md-6">
-            <label for="inputPassword">Password</label>
-            <input type="password" name="password" id="password" value="" class="form-control" id="inputPassword" placeholder="Password">
+            <label for="color">Color</label>
+            <input type="color" name="color" id="color" value="{{old('color', $eventType->color)}}" class="form-control">{{$eventType->color}}
         </div>
         
 

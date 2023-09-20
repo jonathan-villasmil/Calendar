@@ -1,27 +1,28 @@
 @extends('adminlte::page')
 
-@section('title', 'Create User')
+@section('title', 'Create Event Type')
 
 @section('content_header')
-    <h1>Create User</h1>
+    <h1>Create Event Type</h1>
 @stop
 
 @section('content')
-    <form action="{{ route('admin.users.store')}}" method="POST" >
+    <form action="{{ route('admin.event-types.store')}}" method="POST" >
         @csrf
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="name">Name</label>
-                <input type="text" name="name" class="form-control" id="inputname" placeholder="Name">
+                <input type="text" name="name" class="form-control" id="name" placeholder="Name">
                 @error('name')
                     <span class="alert text-danger" role="alert">{{ $message }}</span>
                 @enderror
+                
             </div>
 
             <div class="form-group col-md-6">
-                <label for="email">Email</label>
-                <input type="email" name="email" class="form-control" id="inputEmail" placeholder="Email">
-                @error('email')
+                <label for="description">Description</label>
+                <input type="text" name="description" class="form-control" id="description" placeholder="description">
+                @error('description')
                     <span class="alert text-danger" role="alert">{{ $message }}</span>
                 @enderror
             </div>
@@ -31,9 +32,9 @@
             </div> --}}
 
             <div class="form-group col-md-6">
-                <label for="password">Password</label>
-                <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Password">
-                @error('password')
+                <label for="Color">Color</label>
+                <input type="color" id="color" name="color" value="#ff0000">
+                @error('color')
                     <span class="alert text-danger" role="alert">{{ $message }}</span>
                 @enderror
             </div>

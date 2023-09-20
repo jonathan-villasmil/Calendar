@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'User')
+@section('title', 'Event Types')
 
 @section('content_header')
    <div class=" d-flex p-3 align-items-center justify-content-between">
@@ -15,7 +15,7 @@
 
     <div class="d-flex p-3 align-items-center justify-content-between">
         <div class="btn-group" role="group" aria-label="Basic example">
-            <button id="openModalButton" type="button" class="btn btn-success mr-3 rounded"><a class="text-white" href="{{route('admin.users.create')}}">Create User</a></button>
+            <button id="openModalButton" type="button" class="btn btn-success mr-3 rounded"><a class="text-white" href="{{route('admin.event-types.create')}}">Create Event Type</a></button>
             <button type="button" class="btn btn-info mr-3 rounded">Importar Csv</button>
             <button type="button" class="btn btn-primary rounded">Exportar Csv</button>
         </div>
@@ -37,22 +37,24 @@
               <tr class="text-center">
                 <th scope="col">ID</th>
                 <th scope="col">Name</th>
-                <th scope="col">Email</th>
+                <th scope="col">Description</th>
+                <th scope="col">Color</th>
                 <th scope="col">Action</th>
                 
               </tr>
             </thead>
             <tbody>
-                @forelse ($users as $user)
+                @forelse ($event_types as $event_type)
                     <tr class="text-center">
-                        <th scope="row">{{$user->id}}</th>
-                            <td>{{$user->name}}</td>
-                            <td>{{$user->email}}</td>
+                        <th scope="row">{{$event_type->id}}</th>
+                            <td>{{$event_type->name}}</td>
+                            <td>{{$event_type->description}}</td>
+                            <td><input type="color" value="{{$event_type->color}}">{{$event_type->color}}</td>
                             <td>
-                                <div class="btn-group " role="group">
-                                    <button  class="btn btn-success mr-2 rounded"><a class="text-white" href="{{route('admin.users.show', $user)}}">Show</a></button>
-                                    <button  class="btn btn-primary mr-2 rounded"><a class="text-white" href="{{route('admin.users.edit', $user)}}">Edit</a></button>
-                                    <form action="{{route('admin.users.destroy', $user)}}"  method="POST">
+                                <div class="btn-group" role="group">
+                                    <button href="{{route('admin.event-types.show', $event_type)}}" class="btn btn-success mr-2 rounded"><a class="text-white" href="{{route('admin.event-types.show', $event_type)}}">Show</a></button>
+                                    <button href="{{route('admin.event-types.edit', $event_type)}}" class="btn btn-primary mr-2 rounded"><a class="text-white" href="{{route('admin.event-types.edit', $event_type)}}">Edit</a></button>
+                                    <form action="{{route('admin.event-types.destroy', $event_type)}}"  method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger rounded">Delete</button>
